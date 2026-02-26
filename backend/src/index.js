@@ -4,9 +4,10 @@ import Router from "./routes/Router.js";
 import mongoose from "mongoose";
 import "dotenv/config";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use(Router);
 

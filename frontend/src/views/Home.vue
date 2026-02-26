@@ -1,14 +1,17 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import api from "@/services/api";
+import router from "@/router";
 
 const users = ref([]);
 const loading = ref(true);
+const name = ref("");
 
 async function fetchUsers() {
   try {
     const response = await api.get("/auth/users");
     users.value = response.data;
+    router.push("")
   } catch (error) {
     console.error("Erro ao carregar usuários:", error);
   } finally {
@@ -17,6 +20,12 @@ async function fetchUsers() {
 }
 
 onMounted(() => {
+  const savedName = localStorage.getItem("username");
+  if (savedName) {
+    name.value = savedName.split(" ")[0];
+  } else {
+    name.value = "visitante";
+  }
   fetchUsers();
 });
 </script>
@@ -26,7 +35,7 @@ onMounted(() => {
     <h1 class="text-2xl font-bold mb-6">
       Sistema de Login - Lista de Usuários Cadastrados
     </h1>
-
+    <h2>Olá, {{ name }}</h2>
     <div v-if="loading" class="animate-pulse text-indigo-400">
       Carregando usuários...
     </div>

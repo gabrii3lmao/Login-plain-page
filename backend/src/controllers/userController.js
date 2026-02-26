@@ -1,6 +1,7 @@
 import User from "../models/userModel.js";
 import generateToken from "../services/jwtService.js";
 
+
 export class UserController {
   static async register(req, res, next) {
     try {
@@ -36,17 +37,10 @@ export class UserController {
       }
 
       const token = generateToken({ id: user.id, email: user.email });
-      res.json({ message: "Login successful!", token });
+      res.json({ message: "Login successful!", token, username: user.name });
     } catch (error) {
       res.status(500).json({ error: error.message });
     }
-  }
-
-  static async profile(req, res) {
-    res.json({
-      message: "Welcome to your profile",
-      user: req.user,
-    });
   }
 
   static async getUsers(req, res) {

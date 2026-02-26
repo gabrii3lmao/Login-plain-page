@@ -14,9 +14,10 @@ async function handleLogin() {
       password: password.value,
     });
 
-    const { token } = response.data;
+    const { token, username } = response.data;
 
     localStorage.setItem("token", token);
+    localStorage.setItem("username", username);
     router.push("/");
     console.log("Logado com sucesso");
   } catch (error) {
@@ -69,10 +70,10 @@ async function handleLogin() {
               >Sua Senha</label
             >
             <div class="text-sm">
-              <a
-                href="#"
+              <RouterLink
+                to="forgot-password"
                 class="font-semibold text-indigo-400 hover:text-indigo-300"
-                >Esqueceu da senha?</a
+                >Esqueceu da senha?</RouterLink
               >
             </div>
           </div>
@@ -100,7 +101,11 @@ async function handleLogin() {
       </form>
       <p class="mt-10 text-center text-sm/6 text-gray-400">
         Não tem uma conta?
-        <RouterLink to="/signup" class="font-semibold text-indigo-400 hover:text-indigo-300">Registre-se!</RouterLink>
+        <RouterLink
+          to="/signup"
+          class="font-semibold text-indigo-400 hover:text-indigo-300"
+          >Registre-se!</RouterLink
+        >
       </p>
     </div>
   </div>

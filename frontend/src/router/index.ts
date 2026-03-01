@@ -1,9 +1,9 @@
 import { createRouter, createWebHistory } from "vue-router";
-import Login from "@/views/Login.vue";
-import Cadastro from "@/views/Cadastro.vue";
+import Login from "@/views/auth/Login.vue";
+import Cadastro from "@/views/auth/Cadastro.vue";
 import Home from "@/views/Home.vue";
-import SendEmailReset from "@/views/SendEmailReset.vue";
-import ResetPassword from "@/views/ResetPassword.vue";
+import SendEmailReset from "@/views/auth/SendEmailReset.vue";
+import ResetPassword from "@/views/auth/ResetPassword.vue";
 
 const routes = [
   {

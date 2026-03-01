@@ -21,7 +21,7 @@ async function handleSignup() {
     });
     router.push("/signin");
   } catch (error) {
-    console.log("Deu ruim aqui: ", error);
+    console.log("Erro no cadastro: ", error);
   } finally {
     loading.value = false;
   }
